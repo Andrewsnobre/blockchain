@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
-// Uncomment this line to use console.log
+// Uncomment this line to use console.log c c cfdfd
 // import "hardhat/console.sol";
 
 contract Lock {
