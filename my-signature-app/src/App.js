@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import SignatureCanvas from "react-signature-canvas";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
+import { useDropzone } from "react-dropzone";
+
 import "./App.css";
 
 function App() {
@@ -97,15 +99,35 @@ function App() {
   };
   
 
-  
-  
-
-
-  const handlePdfUpload = (event) => {
-    const file = event.target.files[0];
+  const handlePdfUpload = (acceptedFiles) => {
+    const file = acceptedFiles[0];
     setPdf(file);
     setFileHash("");
   };
+  
+  const Dropzone = () => {
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop: handlePdfUpload });
+  
+    return (
+      <div {...getRootProps()} className={`dropzone ${isDragActive ? "active" : ""}`}>
+        <input {...getInputProps()} accept=".pdf" />
+        {isDragActive ? (
+          <p>Arraste o PDF aqui...</p>
+        ) : (
+          <p>Arraste o PDF aqui ou clique para escolher o arquivo</p>
+        )}
+      </div>
+    );
+  };
+  
+  
+
+
+  //const handlePdfUpload = (event) => {
+ //   const file = event.target.files[0];
+ //   setPdf(file);
+ //   setFileHash("");
+ // };
 
   const handleSignPdf = async () => {
     if (!pdf || !signatureCanvas) return;
@@ -164,7 +186,7 @@ function App() {
     //    height: signatureHeight,
     //  });
     const { latitude, longitude } = geolocation;
-      const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat:${latitude} Long:${longitude} IP: ${ipAddress}`;
+      const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat:${latitude}Long${longitude} IP: ${ipAddress}`;
       const hashX = 10;
       const hashY = 130;
 
@@ -233,7 +255,9 @@ function App() {
   return (
      <div className="container">
     <h1>Assinatura Eletrônica de PDF</h1>
-    <input type="file" accept=".pdf" onChange={handlePdfUpload} />
+
+   <Dropzone />
+
 
     {pdf && (
       <div className="pdf-section">
