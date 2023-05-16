@@ -11,6 +11,26 @@ function App() {
   const [cpf, setCPF] = useState("");
   const [fullName, setFullName] = useState("");
 
+  const getGeolocation = () => {
+    return new Promise((resolve, reject) => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            resolve({ latitude, longitude });
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+      } else {
+        reject(new Error("Geolocation is not supported by this browser"));
+      }
+    });
+  };
+  
+
+
 
   const getIpAddress = () => {
     return new Promise((resolve, reject) => {
@@ -103,6 +123,15 @@ function App() {
     setCPF(enteredCPF);
     setFullName(enteredFullName);
 
+    let geolocation = null;
+    try {
+      geolocation = await getGeolocation();
+    } catch (error) {
+      console.error("Failed to retrieve geolocation:", error);
+    }
+
+
+
     const fileHash = await calculateFileHash(pdf);  
     setFileHash(fileHash);
 
@@ -134,8 +163,8 @@ function App() {
     //    width: signatureWidth,
     //    height: signatureHeight,
     //  });
-
-      const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF} IP: ${ipAddress}`;
+    const { latitude, longitude } = geolocation;
+      const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat:${latitude} Long:${longitude} IP: ${ipAddress}`;
       const hashX = 10;
       const hashY = 130;
 
