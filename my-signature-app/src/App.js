@@ -94,8 +94,8 @@ function App() {
     const timestamp = new Date().toLocaleString();
     
 
-    const enteredCPF = prompt("Enter CPF:");
-    const enteredFullName = prompt("Enter full name:");
+    const enteredCPF = prompt("Informe seu CPF:");
+    const enteredFullName = prompt("Informe seu nome Completo:");
   
     // Validate the entered CPF and full name if needed
     // ...
