@@ -31,6 +31,8 @@ function App() {
     });
   };
   
+  
+
 
 
 
@@ -229,6 +231,9 @@ function App() {
     
   };
 
+ 
+
+
   const handlePreviewSignature = () => {
     if (signatureCanvas) {
       const signatureImage = signatureCanvas.toDataURL("image/png");
@@ -252,6 +257,14 @@ function App() {
     return hashHex;
   };
 
+  window.onmessage = (event) => {
+    if (event.data) {
+       let receivedData = event.data;
+       console.log(receivedData);
+    }
+  };  
+  console.log(receivedData);
+  
   return (
      <div className="container">
     <h1>Assinatura Eletrônica de PDF</h1>
