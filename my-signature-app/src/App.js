@@ -161,8 +161,8 @@ function App() {
     // Validate the entered CPF and full name if needed
     // ...
   
-    setCPF(enteredCPF);
-    setFullName(enteredFullName);
+   // setCPF(enteredCPF);
+   // setFullName(enteredFullName);
 
 /*     let geolocation = null;
     try {
