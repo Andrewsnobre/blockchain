@@ -16,7 +16,7 @@ function App() {
 
   
   window.onmessage = (event) => {
-    if (event.data) {
+    if (event.data != Object) {
        let receivedData = event.data;
        console.log("dentro: " + receivedData);
        localStorage.setItem("Memail",receivedData);
