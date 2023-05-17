@@ -15,7 +15,7 @@ function App() {
   const [receivedData, setReceivedData] = useState("");
 
 
-  const getGeolocation = () => {
+ /*  const getGeolocation = () => {
     return new Promise((resolve, reject) => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -31,7 +31,7 @@ function App() {
         reject(new Error("Geolocation is not supported by this browser"));
       }
     });
-  };
+  }; */
   
   
   window.onmessage = (event) => {
@@ -199,9 +199,9 @@ function App() {
     //    width: signatureWidth,
     //    height: signatureHeight,
     //  });
-      const { latitude, longitude } = geolocation;
+      //const { latitude, longitude } = geolocation;
       //const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat:${latitude}Long${longitude} IP: ${ipAddress}`;
-      const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat:${latitude}Long${longitude} IP: ${ipAddress}\nEmail: ${receivedData}`;
+      const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat: N/A Long: N/A IP: ${ipAddress}\nEmail: ${receivedData}`;
       const hashX = 10;
       const hashY = 130;
 
