@@ -207,7 +207,7 @@ function App() {
       //const { latitude, longitude } = geolocation;
       //const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat:${latitude}Long${longitude} IP: ${ipAddress}`;
       //const receivedDataString = JSON.stringify(receivedData);
-      const hashText = `SHA-256 do documento original:${fileHash}\nAssinado Em: ${timestamp}\n IP: ${ipAddress}\n  ${receivedData}`;
+      const hashText = `SHA-256 do documento original:${fileHash}\n ${receivedData}\n Assinado Em: ${timestamp}\n IP: ${ipAddress}`;
       const hashX = 10;
       const hashY = 140;
 
