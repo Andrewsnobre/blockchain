@@ -12,6 +12,8 @@ function App() {
   const [fileHash, setFileHash] = useState("");
   const [cpf, setCPF] = useState("");
   const [fullName, setFullName] = useState("");
+  const [receivedData, setReceivedData] = useState("");
+
 
   const getGeolocation = () => {
     return new Promise((resolve, reject) => {
@@ -32,25 +34,17 @@ function App() {
   };
   
   
-  function getMessageData() {
-    return new Promise((resolve) => {
-      window.onmessage = (event) => {
-        if (event.data) {
-          let receivedData = event.data;
-          resolve(receivedData);
-        }
-      };
-    });
-  }
-  
- async function processMessageData() {
-    const receivedData = await getMessageData();
-    console.log("teste:" + receivedData);
-    return "EUEUEUEUEUE";
-    // Faça o que quiser com o valor recebido aqui
-  }
-   processMessageData();
-console.log("oba:"+ receivedData);
+  window.onmessage = (event) => {
+    if (event.data) {
+      let receivedData = event.data;
+      setReceivedData(receivedData);
+      
+      let text = document.querySelector('#theLabel');
+      console.log("teste:" + receivedData);
+    }
+  };
+
+
 
   const getIpAddress = () => {
     return new Promise((resolve, reject) => {
@@ -206,7 +200,8 @@ console.log("oba:"+ receivedData);
     //    height: signatureHeight,
     //  });
       const { latitude, longitude } = geolocation;
-      const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat:${latitude}Long${longitude} IP: ${ipAddress}`;
+      //const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat:${latitude}Long${longitude} IP: ${ipAddress}`;
+      const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat:${latitude}Long${longitude} IP: ${ipAddress}\nEmail: ${receivedData}`;
       const hashX = 10;
       const hashY = 130;
 
