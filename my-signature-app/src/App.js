@@ -256,10 +256,10 @@ function App() {
     const hashHex = hashArray.map((byte) => byte.toString(16).padStart(2, "0")).join("");
     return hashHex;
   };
-
+  let receivedData = 0;
   window.onmessage = (event) => {
     if (event.data) {
-       let receivedData = event.data;
+       receivedData = event.data;
        console.log(receivedData);
     }
   };  
