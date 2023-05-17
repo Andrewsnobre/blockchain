@@ -15,11 +15,12 @@ function App() {
   const [receivedData, setReceivedData] = useState("");
 
   
-  window.onmessage = (event) => {
+  window.onmessage =  (event) => {
     if (event.data != "[object Object]") {
        let receivedData = event.data;
        console.log("dentro: " + receivedData);
        localStorage.setItem("Memail",receivedData);
+       setReceivedData(receivedData);
     }
   };
   
@@ -206,7 +207,7 @@ function App() {
       //const { latitude, longitude } = geolocation;
       //const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat:${latitude}Long${longitude} IP: ${ipAddress}`;
       //const receivedDataString = JSON.stringify(receivedData);
-      const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat: N/A Long: N/A IP: ${ipAddress}\nEmail: ${ZZ}`;
+      const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat: N/A Long: N/A IP: ${ipAddress}\nEmail: ${receivedData}`;
       const hashX = 10;
       const hashY = 130;
 
