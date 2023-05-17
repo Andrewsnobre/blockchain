@@ -155,8 +155,8 @@ function App() {
     const timestamp = new Date().toLocaleString();
     
 
-    const enteredCPF = prompt("Informe seu CPF:");
-    const enteredFullName = prompt("Informe seu nome Completo:");
+    //const enteredCPF = prompt("Informe seu CPF:");
+    //const enteredFullName = prompt("Informe seu nome Completo:");
   
     // Validate the entered CPF and full name if needed
     // ...
@@ -207,7 +207,7 @@ function App() {
       //const { latitude, longitude } = geolocation;
       //const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat:${latitude}Long${longitude} IP: ${ipAddress}`;
       //const receivedDataString = JSON.stringify(receivedData);
-      const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat: N/A Long: N/A IP: ${ipAddress} Email: ${receivedData}`;
+      const hashText = `SHA-256 do documento original:${fileHash}\nAssinado Em: ${timestamp}\n IP: ${ipAddress}\n Email: ${receivedData}`;
       const hashX = 10;
       const hashY = 130;
 
@@ -318,7 +318,7 @@ function App() {
             style="border: dashed;"/>
 
           <div className="signature-preview">
-            <h3>Pré-visualização da Assinatura:</h3>
+            <h3></h3>
             {previewImage && (
               <img
                 src={previewImage}
@@ -328,7 +328,7 @@ function App() {
             )}
 
 <div className="signature-buttons">
-              <button onClick={handlePreviewSignature}>Visualizar</button>
+              //<button onClick={handlePreviewSignature}>Visualizar</button>
               <button onClick={handleClearSignature}>Limpar</button>
             </div>
           </div>
