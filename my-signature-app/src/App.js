@@ -260,10 +260,10 @@ function App() {
   window.onmessage = (event) => {
     if (event.data) {
        receivedData = event.data;
-       console.log(receivedData);
+       console.log("teste:"+ receivedData);
     }
   };  
-  console.log(receivedData);
+  console.log("peguei:"+ receivedData);
   
   return (
      <div className="container">
