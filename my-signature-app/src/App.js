@@ -257,13 +257,14 @@ function App() {
     return hashHex;
   };
   let receivedData = 0;
-  window.onmessage = (event) => {
+  ZZ = window.onmessage = (event) => {
     if (event.data) {
        receivedData = event.data;
        console.log("teste:"+ receivedData);
+       return receivedData;
     }
   };  
-  console.log("peguei:"+ receivedData);
+  console.log("peguei:"+ ZZ);
   
   return (
      <div className="container">
