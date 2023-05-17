@@ -256,15 +256,21 @@ function App() {
     const hashHex = hashArray.map((byte) => byte.toString(16).padStart(2, "0")).join("");
     return hashHex;
   };
-  let receivedData = 0;
-  const ZZ = window.onmessage = (event) => {
+ 
+  let ZZ=0;
+  window.addEventListener('message', event => {
+    ZZ = event.data;
+ });
+ console.log("ue:"+ ZZ);
+
+  window.onmessage = (event) => {
     if (event.data) {
-       receivedData = event.data;
+      let receivedData = event.data;
        console.log("teste:"+ receivedData);
        return receivedData;
     }
   };  
-  console.log("peguei:"+ ZZ);
+  
   
   return (
      <div className="container">
