@@ -209,7 +209,7 @@ function App() {
       //const receivedDataString = JSON.stringify(receivedData);
       const hashText = `SHA-256 do documento original:${fileHash}\nAssinado Em: ${timestamp}\n IP: ${ipAddress}\n Email: ${receivedData}`;
       const hashX = 10;
-      const hashY = 130;
+      const hashY = 140;
 
       newPage.drawText(hashText, {
         x: hashX,
@@ -328,7 +328,7 @@ function App() {
             )}
 
 <div className="signature-buttons">
-              //<button onClick={handlePreviewSignature}>Visualizar</button>
+             
               <button onClick={handleClearSignature}>Limpar</button>
             </div>
           </div>
