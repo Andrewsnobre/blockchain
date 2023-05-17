@@ -49,8 +49,8 @@ function App() {
     return "EUEUEUEUEUE";
     // Faça o que quiser com o valor recebido aqui
   }
-  const ZZ= processMessageData();
-console.log("oba:"+ ZZ);
+   processMessageData();
+console.log("oba:"+ receivedData);
 
   const getIpAddress = () => {
     return new Promise((resolve, reject) => {
