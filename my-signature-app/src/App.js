@@ -257,7 +257,7 @@ function App() {
     return hashHex;
   };
   let receivedData = 0;
-  ZZ = window.onmessage = (event) => {
+  const ZZ = window.onmessage = (event) => {
     if (event.data) {
        receivedData = event.data;
        console.log("teste:"+ receivedData);
