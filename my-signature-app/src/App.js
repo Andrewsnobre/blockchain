@@ -111,6 +111,7 @@ function App() {
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop: handlePdfUpload });
   
     return (
+      
       <div {...getRootProps()} className={`dropzone ${isDragActive ? "active" : ""}`}>
         <input {...getInputProps()} accept=".pdf" />
         {isDragActive ? (
@@ -119,10 +120,21 @@ function App() {
           <p>Arraste o PDF aqui ou clique para escolher o arquivo</p>
         )}
       </div>
+      
     );
   };
   
-  
+  window.onmessage = (event) => {
+    if (event.data) {
+      let receivedData = event.data;
+      
+      let text = document.querySelector('#theLabel');
+      console.log("teste:" + receivedData);
+      
+      text.innerHTML = receivedData;
+      
+    }
+  };
 
 
   //const handlePdfUpload = (event) => {
@@ -256,30 +268,13 @@ function App() {
     const hashHex = hashArray.map((byte) => byte.toString(16).padStart(2, "0")).join("");
     return hashHex;
   };
- 
-  let ZZ = 0;
 
-function receberResultado(resultado) {
-  ZZ = resultado;
-  console.log("Valor recebido e atribuído a ZZ:", ZZ);
-  // Faça o que precisar com o valor atribuído a ZZ
-}
-
-window.onmessage = (event) => {
-  if (event.data) {
-    let receivedData = event.data;
-    console.log("teste:" + receivedData);
-    receberResultado(receivedData);
-  }
-};
-
-console.log("Valor recebido e atribuído a ZZ depois:", ZZ);
-  
   return (
      <div className="container">
     <h1>Assinatura Eletrônica de PDF</h1>
-
+    
    <Dropzone />
+   
 
 
     {pdf && (
@@ -297,6 +292,7 @@ console.log("Valor recebido e atribuído a ZZ depois:", ZZ);
         </div>
 
         <h2>Desenhe sua Assinatura:</h2>
+        
         <div className="signature-container">
           <SignatureCanvas
             penColor="black"
@@ -335,9 +331,18 @@ console.log("Valor recebido e atribuído a ZZ depois:", ZZ);
 
         <button className="sign-button" onClick={handleSignPdf}>Assinar PDF</button>
       </div>
-    )}
+    )
+    
+    
+    }
+    
   </div>
+
 );
+
+
+
+
 }
 
 export default App;
