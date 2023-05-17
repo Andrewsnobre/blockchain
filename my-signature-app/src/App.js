@@ -34,13 +34,7 @@ function App() {
   }; */
   
   
-  window.onmessage = (event) => {
-    if (event.data) {
-      const receivedData = event.data;
-      console.log("dentro: " + receivedData);
-      setReceivedData(receivedData); // Atualizado
-    }
-  };
+  
 
 
 
@@ -212,6 +206,24 @@ function App() {
         color: rgb(0, 0, 0),
       });
 
+
+      window.onmessage = async (event) => {
+     
+        if (event.data) {
+          const receivedData = event.data;
+          console.log("dentro: " + receivedData);
+          page.drawText("aaaaa", {
+            x: 200,
+            y: 200,
+            font: await pdfDoc.embedFont(StandardFonts.Helvetica),
+            size: 8,
+            color: rgb(0, 0, 0),
+          });
+         
+        }
+      };
+
+
       const modifiedPdfBytes = await pdfDoc.save();
       const modifiedPdfBlob = new Blob([modifiedPdfBytes], {
         type: "application/pdf",
@@ -273,6 +285,8 @@ function App() {
      <div className="container">
     <h1>Assinatura Eletrônica de PDF</h1>
     
+  
+
    <Dropzone />
   
 
