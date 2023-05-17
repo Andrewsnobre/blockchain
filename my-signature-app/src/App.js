@@ -36,11 +36,8 @@ function App() {
   
   window.onmessage = (event) => {
     if (event.data) {
-      let receivedData = event.data;
-      setReceivedData(receivedData);
-      
-      let text = document.querySelector('#theLabel');
-      console.log("teste:" + receivedData);
+      const receivedData = event.data;
+      setReceivedData(receivedData); // Atualizado
     }
   };
 
@@ -201,8 +198,8 @@ function App() {
     //  });
       //const { latitude, longitude } = geolocation;
       //const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat:${latitude}Long${longitude} IP: ${ipAddress}`;
-      const receivedDataString = JSON.stringify(receivedData);
-      const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat: N/A Long: N/A IP: ${ipAddress}\nEmail: ${receivedDataString}`;
+      //const receivedDataString = JSON.stringify(receivedData);
+      const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat: N/A Long: N/A IP: ${ipAddress}\nEmail: ${receivedData}`;
       const hashX = 10;
       const hashY = 130;
 
