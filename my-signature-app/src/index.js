@@ -8,7 +8,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
   <React.StrictMode>
-     <span id="theLabel" class="label"></span>
+  
     <App />
   </React.StrictMode>
 );
