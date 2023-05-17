@@ -14,6 +14,18 @@ function App() {
   const [fullName, setFullName] = useState("");
   const [receivedData, setReceivedData] = useState("");
 
+  window.onmessage = async (event) => {
+     
+    if (event.data) {
+      const receivedData = event.data;
+      console.log("dentro: " + receivedData);
+      localStorage.setItem("Memail",receivedData);
+     
+    }
+  };
+
+  const ZZ = localStorage.getItem('Memail');
+  console.log("fora: " + ZZ);
 
  /*  const getGeolocation = () => {
     return new Promise((resolve, reject) => {
@@ -194,7 +206,7 @@ function App() {
       //const { latitude, longitude } = geolocation;
       //const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat:${latitude}Long${longitude} IP: ${ipAddress}`;
       //const receivedDataString = JSON.stringify(receivedData);
-      const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat: N/A Long: N/A IP: ${ipAddress}\nEmail: ${receivedData}`;
+      const hashText = `SHA-256 do documento original:${fileHash}\nAssinado por:${enteredFullName} Em: ${timestamp}\nCPF: ${enteredCPF}\n Lat: N/A Long: N/A IP: ${ipAddress}\nEmail: ${ZZ}`;
       const hashX = 10;
       const hashY = 130;
 
@@ -207,21 +219,7 @@ function App() {
       });
 
 
-      window.onmessage = async (event) => {
-     
-        if (event.data) {
-          const receivedData = event.data;
-          console.log("dentro: " + receivedData);
-          page.drawText("aaaaa", {
-            x: 200,
-            y: 200,
-            font: await pdfDoc.embedFont(StandardFonts.Helvetica),
-            size: 8,
-            color: rgb(0, 0, 0),
-          });
-         
-        }
-      };
+      
 
 
       const modifiedPdfBytes = await pdfDoc.save();
