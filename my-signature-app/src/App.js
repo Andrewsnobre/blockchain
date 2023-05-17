@@ -14,15 +14,15 @@ function App() {
   const [fullName, setFullName] = useState("");
   const [receivedData, setReceivedData] = useState("");
 
-  window.onmessage = async (event) => {
-     
+  
+  window.onmessage = (event) => {
     if (event.data) {
-      const receivedData = event.data;
-      console.log("dentro: " + receivedData);
-      localStorage.setItem("Memail",receivedData);
-     
+       let receivedData = event.data;
+       console.log("dentro: " + receivedData);
+       localStorage.setItem("Memail",receivedData);
     }
   };
+  
 
   const ZZ = localStorage.getItem('Memail');
   console.log("fora: " + ZZ);
