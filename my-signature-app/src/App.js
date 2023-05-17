@@ -257,20 +257,23 @@ function App() {
     return hashHex;
   };
  
-  let ZZ=0;
-  window.addEventListener('message', event => {
-    ZZ = event.data;
- });
- console.log("ue:"+ ZZ);
+  let ZZ = 0;
 
-  window.onmessage = (event) => {
-    if (event.data) {
-      let receivedData = event.data;
-       console.log("teste:"+ receivedData);
-       return receivedData;
-    }
-  };  
-  
+function receberResultado(resultado) {
+  ZZ = resultado;
+  console.log("Valor recebido e atribuído a ZZ:", ZZ);
+  // Faça o que precisar com o valor atribuído a ZZ
+}
+
+window.onmessage = (event) => {
+  if (event.data) {
+    let receivedData = event.data;
+    console.log("teste:" + receivedData);
+    receberResultado(receivedData);
+  }
+};
+
+console.log("Valor recebido e atribuído a ZZ depois:", ZZ);
   
   return (
      <div className="container">
