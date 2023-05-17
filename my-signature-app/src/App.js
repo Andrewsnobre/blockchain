@@ -37,6 +37,7 @@ function App() {
   window.onmessage = (event) => {
     if (event.data) {
       const receivedData = event.data;
+      console.log("dentro: " + receivedData);
       setReceivedData(receivedData); // Atualizado
     }
   };
