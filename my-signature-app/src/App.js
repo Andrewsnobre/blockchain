@@ -159,12 +159,12 @@ function App() {
     setCPF(enteredCPF);
     setFullName(enteredFullName);
 
-    let geolocation = null;
+/*     let geolocation = null;
     try {
       geolocation = await getGeolocation();
     } catch (error) {
       console.error("Failed to retrieve geolocation:", error);
-    }
+    } */
 
 
 
